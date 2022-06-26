@@ -28,6 +28,7 @@ class GlobalTableWriter():
         file_handler.setFormatter(formatter)
         write_results.setLevel('INFO')
         write_results.addHandler(file_handler)
+        header='time-in-linux-epoc-with-milliseconds:gateway-region:node-number:sleep-time-in-ms:number-of-writes-since-last-emit'
 
         try:
             if arguments['SECRETS']:
@@ -47,7 +48,7 @@ class GlobalTableWriter():
         self.logger.info('Writer connected to the cluster on node {} gateway region {}.'.format(cluster_node, gateway_region))
         write_results_logging_info = {'gateway_region': gateway_region, 'node': cluster_node}
         write_results=logging.LoggerAdapter(write_results, write_results_logging_info)
-
+        write_results(header)
 
         if arguments['INSERTS']:
             sql_statement = 'insert into global_table_test(worker, cluster_node, gateway_region, int8_col, varchar50_col, bool_col, jsonb_col) values (%s, %s, %s, %s, %s, %s, %s)'

@@ -27,6 +27,7 @@ class GlobalTableReader():
         file_handler.setFormatter(formatter)
         results.setLevel('INFO')
         results.addHandler(file_handler)
+        header='time-in-linux-epoc-with-milliseconds:gateway-region:node-number:read-latency:number-of-read-operations-since-last-emit'
 
         try:
             if arguments['SECRETS']:
@@ -50,6 +51,7 @@ class GlobalTableReader():
         self.logger.info('Reader connected to the cluster on node {} gateway region {}.'.format(cluster_node, gateway_region))
         results_logging_info = {'gateway_region': gateway_region, 'node': cluster_node}
         results=logging.LoggerAdapter(results, results_logging_info)
+        results.info(header)
 
         if arguments['INSERTS']:
             cursor.execute('select id from global_table_test')
