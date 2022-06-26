@@ -26,7 +26,7 @@ class ArgManager():
       default=5, choices=range(1, 61))
     parser.add_argument('-p', '--RampUp', dest='RAMP', action='store', required=False,  type=int,
       help='How often to ramp up writes (in seconds).  For example a value of 5 will cause the number of writes to increase every 5 seconds.  A log file entry will be created everytime the writes ramp up (or very "RampUp" seconds when the sleep time reaches zero)',
-      default=5, choices=range(1, 61))
+      default=5, choices=range(1, 301))
 
     activity = parser.add_mutually_exclusive_group(required=True)
     activity.add_argument('-r', '--Reader', dest='READER', default=True,  help='Reader Function', action='store_true')

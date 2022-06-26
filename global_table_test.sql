@@ -12,6 +12,6 @@ CREATE TABLE global_table_test (
     bool_col BOOL NULL,
     jsonb_col JSONB NULL,
     CONSTRAINT glbal_table_test_pkey PRIMARY KEY (id ASC)
-);
+) LOCALITY GLOBAL;
 
 

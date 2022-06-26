@@ -73,7 +73,7 @@ class GlobalTableReader():
             i = 0
             number_of_reads = 0
             last_emit_time = time.perf_counter()
-            while i < 1000001:
+            while i < 10000001:
                 tic = time.perf_counter()
                 # i%(len(list_of_ids)) will allow me to keep round-robin reading the list
                 cursor.execute(sql_statement, [list_of_ids[i%len(list_of_ids)]])

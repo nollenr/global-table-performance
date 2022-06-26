@@ -20,7 +20,7 @@ There is one global table in the default db.
 There are two different types of excercises that can be measured:
 - Inserts - The writer is writing to the global table at the same time the readers are attempting to read records however, the readers are reading existing records.  There are no collisions between the readers and writers.
 - Updates - In this scenario, there are only 10 records in the global table.  The readers are reading all 10 records in every pass.  The writer is updating a single record (round robin) in the group of 10 records with every write.  This forces collisions between the readers and writers.
-- 
+
 ## Insert Exercise
 In the "Insert Exercise", the Global Table starts with 100,000 rows.  The readers read in the PK of all 100,000 rows and randomizes the list.  At that point, the readers will continually read from the Global Table by PK until the script is killed.  The readers emit information to a log file with an average latency of the last 100 reads.
 
@@ -34,4 +34,6 @@ In the "Update Exercise", the Global Table starts with only 10 rows.  The reader
 The writer starts by reading the PK of all 10 rows into a list and then updating a field in the table with a random value.  The writer follows the same pattern as in the "Insert Excercise"; update a single row in the table and then sleep for 1,000ms.  It will continue that pattern for a given about of time before decreasing the sleep time by 100ms.  The writer will continue to decrease the sleep time until the sleep time reaches zero.  Each time the sleep cycle is shortened a record will be emitted to 
 
 # Readouts
-Once the Exercise (either the Insert or Update) is complete, the log files are loaded into the database and some analytics are run to produce output that can then be graphed.  
+Once the Exercise (either the Insert or Update) is complete, the log files are loaded into the database and some analytics are run.
+
+See the readouts [here](results_readout.md)
