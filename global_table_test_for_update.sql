@@ -1,0 +1,11 @@
+INSERT INTO public.global_table_test (id,create_time,rowid,worker,cluster_node,gateway_region,gateway_az,lease_holder,int8_col,varchar50_col,bool_col,jsonb_col) VALUES
+	 ('000004b9-7d3d-4626-a337-30b0cca53341','2022-06-06 11:08:02.303963-07',768306322824134658,'Process-30',2,'aws-us-west-2',NULL,NULL,NULL,'one-hundered',true,'{"one": "1", "two": "2"}'),
+	 ('000008f7-3f94-4434-99ca-d6ae14d4cff2','2022-06-06 11:11:48.554492-07',768307064204001282,'Process-40',2,'aws-us-west-2',NULL,NULL,7310,'one-hundered',true,'{"one": "1", "two": "2"}'),
+	 ('00000d94-8a08-4064-92cb-14125985bc30','2022-06-06 10:00:46.977783-07',768293099860295682,'Process-34',2,'aws-us-west-2',NULL,NULL,NULL,'one',true,'{"one": "1", "two": "2"}'),
+	 ('00000dd2-6db1-407b-86d8-01f54c63b54d','2022-06-06 10:57:09.145686-07',768304182545514498,'Process-41',2,'aws-us-west-2',NULL,NULL,NULL,'one',true,'{"one": "1", "two": "2"}'),
+	 ('00000e8e-5e4c-4a8b-b3ec-917fcdecf33c','2022-06-06 11:12:07.966814-07',768307127811538947,'Process-31',3,'aws-us-west-2',NULL,NULL,NULL,'one-hundered',true,'{"one": "1", "two": "2"}'),
+	 ('00000e9a-b282-4256-8c21-f6c18472ac3c','2022-06-06 09:59:39.503416-07',768292878758805507,'Process-4',3,'aws-us-west-2',NULL,NULL,NULL,'one',true,'{"one": "1", "two": "2"}'),
+	 ('00000f13-5b66-4451-ac27-4ee78c2570bc','2022-06-06 11:11:07.372968-07',768306929260265473,'Process-18',1,'aws-us-west-2',NULL,NULL,NULL,'one-hundered',true,'{"one": "1", "two": "2"}'),
+	 ('00000f91-167b-42f4-bc85-399397b355cf','2022-06-06 11:11:58.939575-07',768307098232029187,'Process-32',3,'aws-us-west-2',NULL,NULL,NULL,'one-hundered',true,'{"one": "1", "two": "2"}'),
+	 ('000014c4-ae3f-4dbc-a434-eee258c78dcf','2022-06-06 11:09:37.360026-07',768306634304520193,'Process-22',1,'aws-us-west-2',NULL,NULL,NULL,'one-hundered',true,'{"one": "1", "two": "2"}'),
+	 ('0000161b-31bb-406f-9166-4473adb1c945','2022-06-06 11:00:23.577665-07',768304819661144066,'Process-32',2,'aws-us-west-2',NULL,NULL,NULL,'one',true,'{"one": "1", "two": "2"}');

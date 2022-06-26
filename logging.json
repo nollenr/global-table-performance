@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "disable_existing_loggers": 0,
+  "filters" :{"log_filter": {"()": "__main__.LogFilter"}},
+  "formatters" : {
+    "fileFormatter"  : {"format": "%(asctime)s:%(levelname)s:%(name)s:%(message)s", "datefmt": "%Y:%m:%d:%H:%M:%S"},
+    "streamFormatter": {"format": "%(levelname)s:%(name)s:%(message)s"}
+  },
+  "handlers" : { 
+    "fileHandler": {"filters": ["log_filter"], "class": "logging.handlers.RotatingFileHandler", "level": "INFO","formatter": "fileFormatter","filename": "global_table_profiler.log", "maxBytes": 524288, "backupCount": 5},
+    "streamHandler": {"filters": ["log_filter"], "class": "logging.StreamHandler", "formatter": "streamFormatter","level": "DEBUG","stream": "ext://sys.stdout"}
+  },
+  "root" : {"handlers": ["fileHandler", "streamHandler"], "level": "DEBUG"}
+}
