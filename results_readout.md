@@ -61,6 +61,8 @@ It looks like the maximum number of records that can be updated by the write is 
 
 Between 50ms sleep time and 40ms sleep time for writes the impact to the readers is very dramatic.  The read latencies basically double when when the sleep time decreases between 50ms and 40ms.  
 
+Remember that the average latency of writes can reach 500ms in this test (see the log file below).  At a 40ms sleep time, the writer is completing a 500ms write and sleeps for 40ms.  In 40ms, the reader can read 5 or 6 times (read latency is about 7ms).  
+
 The raw results in log files are availble
 - [reader output us-east-1](logfiles/Update_Exercise/reader_output_use1.log)
 - [reader output us-east-2](logfiles/Update_Exercise/reader_output_use2.log)
