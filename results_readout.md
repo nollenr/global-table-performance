@@ -41,7 +41,7 @@ The insert exercise was not meant to stress the Cockroach Database.  It was mean
 
 The maximum number of records being inserted in a 90second period was about 225 or about 2.5 records per second.
 
-The average latency of reads did not change throughout the test.
+The average latency of reads did not change throughout the test.  It is my opinion that at this scale, the number of writes to a Global Table does not impact the reads as long as there is no conflict between the reads and writes.
 
 ![Insert Exercise Graph](jpg/Insert_Exercise_Graph.jpg)
 The raw results in log files are available
@@ -57,15 +57,21 @@ There is constant overlap between the readers and writers.
 
 It looks like the maximum number of records that can be updated by the write is about 225 or about 2.5 records per second.
 
-![Update Exercise Graph](jpg/Update_Exercise_Graph.jpg)
+![Update Exercise Graph](jpg/Update_Exercise_Graph_3.jpg)
 
 Between 50ms sleep time and 40ms sleep time for writes the impact to the readers is very dramatic.  The read latencies basically double when when the sleep time decreases between 50ms and 40ms.  
 
-Remember that the average latency of writes can reach 500ms in this test (see the log file below).  At a 40ms sleep time, the writer is completing a 500ms write and sleeps for 40ms.  In 40ms, the reader can read 5 or 6 times (read latency is about 7ms).  
+What we need to take notice of, is the "MAX Latencies" on the graph above.  The average latencies mask the MAX Latencies that the readers experience when waiting for the writer to complete work.  As the readers hit more and more contention from the readers, the average does increase.  
+
+There is a lot of information on the graph making it difficult to interpret.  
+
+- The left hand scale is used for the Average Write Latency and the Max Read Latencies.
+- The right hand scale is used for the Average Read Latencies.
 
 The raw results in log files are availble
-- [reader output us-east-1](logfiles/Update_Exercise/reader_output_use1.log)
-- [reader output us-east-2](logfiles/Update_Exercise/reader_output_use2.log)
-- [reader output us-west-2](logfiles/Update_Exercise/reader_output_usw2.log)
-- [writer output us-east-1](logfiles/Update_Exercise/writer_output.log)
+- [reader output us-east-1](logfiles/Update_Exercise_3/reader_output_use1.log)
+- [reader output us-east-2](logfiles/Update_Exercise_3/reader_output_use2.log)
+- [reader output us-west-2](logfiles/Update_Exercise_3/reader_output_usw2.log)
+- [writer output us-east-1](logfiles/Update_Exercise_3/writer_output_use1.log)
 
+The [Excel File](xls/results.xlsx) contains the graphs and the data used to created the graphs.

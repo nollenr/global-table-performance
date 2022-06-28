@@ -31,7 +31,7 @@ There is never a collision in the rows the readers are reading and the rows the 
 ## Update Exercise.
 In the "Update Exercise", the Global Table starts with only 10 rows.  The readers continually read all 10 rows in the table, as fast as they can, until the script is cancelled.  The readers emit information to a log file with an average latency of the last 100 reads.   The latency of the reads includes fetching the 10 records. 
 
-The writer starts by reading the PK of all 10 rows into a list and then updating a field in the table with a random value.  The writer follows the same pattern as in the "Insert Excercise"; update a single row in the table and then sleep for 1,000ms.  It will continue that pattern for a given about of time before decreasing the sleep time by 100ms.  The writer will continue to decrease the sleep time until the sleep time reaches zero.  Each time the sleep cycle is shortened a record will be emitted to 
+The writer starts by reading the PK of all 10 rows into a list and then updating a field in the table with a random value.  The writer follows the same pattern as in the "Insert Excercise"; update a single row in the table and then sleep for 1,000ms.  It will continue that pattern for a given about of time before decreasing the sleep time by 100ms.  The writer will continue to decrease the sleep time until the sleep time reaches zero.  Each time the sleep cycle is shortened a record will be emitted to the log file.
 
 # Readouts
 Once the Exercise (either the Insert or Update) is complete, the log files are loaded into the database and some analytics are run.

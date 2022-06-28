@@ -22,8 +22,8 @@ class ArgManager():
       the tool.''')
 
     parser.add_argument('-e', '--Emit', dest='EMIT', action='store', required=False,  type=int,
-      help='How often to emit read latency averages (in seconds).  Beware: output will be emitted no less than the parameter, however, it could be considerable longer. ',
-      default=5, choices=range(1, 61))
+      help='How often to emit read latency averages (in seconds).  Beware: output will be emitted no less than the parameter, however, it could be considerable longer.  Emit of 0 will output the results of every read with no latency averaging.',
+      default=5, choices=range(0, 61))
     parser.add_argument('-p', '--RampUp', dest='RAMP', action='store', required=False,  type=int,
       help='How often to ramp up writes (in seconds).  For example a value of 5 will cause the number of writes to increase every 5 seconds.  A log file entry will be created everytime the writes ramp up (or very "RampUp" seconds when the sleep time reaches zero)',
       default=5, choices=range(1, 301))

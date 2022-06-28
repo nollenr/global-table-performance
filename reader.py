@@ -90,7 +90,7 @@ class GlobalTableReader():
                 if (time.perf_counter() - last_emit_time) > arguments['EMIT']:
                     last_emit_time = time.perf_counter()
                     # output the average latency to the log file as often as the "emit" request
-                    results.info(str(mean(running_latencies))+':'+str(number_of_reads))
+                    results.info(str(mean(running_latencies))+':'+str(number_of_reads)+':'+str(max(running_latencies)))
                     number_of_reads = 0
                 i += 1
                 
@@ -112,14 +112,23 @@ class GlobalTableReader():
                 # This is the number of "select latencies" I'm going to keep a running average of
                 # For example if RUNNING_LATENCIES_LENGTH = 100, then I'm going to keep the last 100
                 # latency samples and then produce an average from that list of 100.  
-                if i < RUNNING_LATENCIES_LENGTH:
-                    running_latencies.append((toc-tic)*1000)
-                else:
-                    running_latencies[i%RUNNING_LATENCIES_LENGTH] = (toc-tic)*1000
-                if (time.perf_counter() - last_emit_time) > arguments['EMIT']:
+
+                # if i < RUNNING_LATENCIES_LENGTH:
+                #     running_latencies.append((toc-tic)*1000)
+                # else:
+                #     running_latencies[i%RUNNING_LATENCIES_LENGTH] = (toc-tic)*1000
+
+                # changing to average just the reads since the last "emit"
+                running_latencies.append((toc-tic)*1000)
+                if arguments['EMIT'] == 0:
+                    results.info(str((toc-tic)*1000)+':'+str(number_of_reads))
+                    number_of_reads = 0
+                elif (time.perf_counter() - last_emit_time) > arguments['EMIT']:
                     last_emit_time = time.perf_counter()
                     # output the average latency to the log file as often as the "emit" request
-                    results.info(str(mean(running_latencies))+':'+str(number_of_reads))
+                    results.info(str(mean(running_latencies))+':'+str(number_of_reads)+':'+str(max(running_latencies)))
                     number_of_reads = 0
+                    # changing to average just the reads since the last "emit"
+                    running_latencies = []
                 i += 1
 

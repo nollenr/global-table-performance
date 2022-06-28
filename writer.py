@@ -119,6 +119,5 @@ class GlobalTableWriter():
                         first_record = False
                 i += 1
 
-# conditionally import faker for updates
-# read all 10 PKs into a list and round-robin through the list
+
 
