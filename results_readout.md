@@ -37,7 +37,7 @@ In the insert exercise the readers in each region are reading as fast as they ca
 
 There is no overlap (or contention) between the readers and writer.  
 
-The insert exercise was not meant to stress the Cockroach Database.  It was meant strictly to see if, as the number of writes on a global table increases, the latency of reads decreases. In this exercise there is no overlap between the records being read and the records being written.
+The insert exercise was not meant to stress the Cockroach Database.  It was meant strictly to see if, as the number of writes on a global table increases, the latency of reads increases. In this exercise there is no overlap between the records being read and the records being written.
 
 The maximum number of records being inserted in a 90second period was about 225 or about 2.5 records per second.
 
