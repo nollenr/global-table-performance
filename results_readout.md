@@ -51,9 +51,9 @@ The raw results in log files are available
 - [writer output us-east-1](logfiles/Insert_Exercise/writer_output.log)
 
 # Update Exercise
-In the update exercise the readers in each region are reading all 10 records in the Global Table as fast as they can.  The writer is updating a record and then sleeping for 1000ms; every 90 seconds the amount of sleep time is reduced by 100ms until the writer is writing as fast as it can.  
+In the update exercise the readers in each region are reading all the records in the  Global Table as fast as they can (for this test, there are exactly 10 records in the table).  The writer is updating a record and then sleeping for 1000ms; every 90 seconds the amount of sleep time is reduced by 100ms until the writer is writing as fast as it can.  
 
-There is constant overlap between the readers and writers.
+There is constant overlap between the records the readers are reading and the record the writer is updating.
 
 It looks like the maximum number of records that can be updated by the write is about 225 or about 2.5 records per second.
 
@@ -61,7 +61,7 @@ It looks like the maximum number of records that can be updated by the write is 
 
 Between 50ms sleep time and 40ms sleep time for writes the impact to the readers is very dramatic.  The read latencies basically double when when the sleep time decreases between 50ms and 40ms.  
 
-What we need to take notice of, is the "MAX Latencies" on the graph above.  The average latencies mask the MAX Latencies that the readers experience when waiting for the writer to complete work.  As the readers hit more and more contention from the readers, the average does increase.  
+What we need to take notice of, is the "MAX Read Latencies" on the graph above.  The average read latencies mask the MAX read Latencies that the readers experience when waiting for the writer to complete work.  As the readers hit more and more contention from the writer, the average does increase.  
 
 There is a lot of information on the graph making it difficult to interpret.  
 
